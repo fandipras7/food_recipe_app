@@ -88,7 +88,7 @@ const AddRecipe = () => {
           </div>
           <div className="row justify-content-center">
             <div className="col-8 mt-5 text-center">
-              <textarea style={{ height: "250px" }} /*value={dataProduct.description} */ name="ingredients" onChange={handleChange} class="form-control" placeholder="Ingredients" aria-label="With textarea"></textarea>
+              <textarea style={{ height: "250px" }} /*value={dataProduct.description} */ name="ingredients" onChange={handleChange} className="form-control" placeholder="Ingredients" aria-label="With textarea"></textarea>
             </div>
           </div>
           <div className="row justify-content-center">

@@ -74,7 +74,7 @@ const DetailRecipe = () => {
                 <p>- {item}</p>
               ))} */}
               {recipes.ingredients && recipes.ingredients.split(',').map((item)=>(
-                <p>- {item}</p>
+                <p key={item.id}>- {item}</p>
               ))}
             </div>
           </div>

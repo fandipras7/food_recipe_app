@@ -1,4 +1,3 @@
-import Head from "next/head";
 import "../styles/globals.css";
 import { store, wrapper } from "../redux/store";
 import { Provider } from "react-redux";

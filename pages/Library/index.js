@@ -14,7 +14,7 @@ const Library = ({ recipes }) => {
       <MyLayout title="Library">
         <div className="row">
           {recipes.map((item) => (
-            <div className="col">
+            <div key={item.id} className="col">
               <Card
                 key={item.id}
                 img={item.image}

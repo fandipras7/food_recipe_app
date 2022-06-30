@@ -28,7 +28,7 @@ const DetailLibrary = ({ recipe }) => {
           <div className="row mt-5">
             <div className="col">
               <p className="fs-5">Ingredients</p>
-              {recipe.ingredients && recipe.ingredients.split(",").map((item) => <p>- {item}</p>)}
+              {recipe.ingredients && recipe.ingredients.split(",").map((item) => <p key={item.id}>- {item}</p>)}
             </div>
           </div>
           <div className="row mt-5">
