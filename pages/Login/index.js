@@ -3,7 +3,7 @@ import styles from "./login.module.css";
 import Label from "../../component/base/Label";
 import Input from "../../component/base/Input";
 import Button from "../../component/base/Button";
-import { login } from "../redux/action/userAction";
+// import { login } from "../redux/action/userAction";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import axios from "axios";
@@ -50,7 +50,7 @@ const Login = ({ children }) => {
           <div className="col-6 d-flex flex-column align-items-center justify-content-center">
             <form
               onSubmit={() => {
-                hanldeLogin;
+                // hanldeLogin;
               }}
             >
               {children ? (

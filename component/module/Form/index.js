@@ -1,11 +1,11 @@
 import axios from "axios";
-import Router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import Button from "../../base/Button";
 import Input from "../../base/Input";
 import Label from "../../base/Label";
-import { login } from "../../../pages/redux/action/userAction";
+import login from "../../../redux/action/userAction";
 
 const Form = () => {
   const dispatch = useDispatch();
@@ -26,6 +26,7 @@ const Form = () => {
       .post("http://localhost:4000/v1/users/login", form, { withCredentials: true })
       .then(() => {
         alert("login succes");
+        // localStorage.setItem("isLogin", true);
         rounter.push("/Home");
       })
       .catch(() => {
@@ -34,7 +35,13 @@ const Form = () => {
   };
   return (
     <div className="col-6">
-      <form onSubmit={handleLogin}>
+      <form
+        // onSubmit={handleLogin}
+        onSubmit={(e) => {
+          e.preventDefault();
+          dispatch(login(form));
+        }}
+      >
         <div className="row vh-100 align-items-center text-center justify-content-center">
           <div className="col-8 text-center">
             <h6>Welcome</h6>

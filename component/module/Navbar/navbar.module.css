@@ -17,3 +17,13 @@
   /* background-color: red;y */
   width: 100%;
 }
+
+.links_dua {
+  display: flex;
+  list-style: none;
+  /* gap: 100px; */
+  margin-right: 100px;
+  text-align: center;
+  /* background-color: red; */
+  /* width: 100%; */
+}

@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import axios from "axios";
 
 const AddRecipe = () => {
+  // const isLogin = localStorage.getItem("isLogin");
   const router = useRouter();
   const [dataRecipe, setDataRecipe] = useState({
     title: "",
@@ -15,7 +16,7 @@ const AddRecipe = () => {
     video: "",
   });
 
-  const [title, setTitle] = useState('Next')
+  const [title, setTitle] = useState("Next");
 
   const handleChange = (e) => {
     setDataRecipe({
@@ -46,10 +47,10 @@ const AddRecipe = () => {
 
   async function fetchData(dataform) {
     try {
-      setTitle('Next...')
+      setTitle("Next...");
       const result = await axios.post("http://localhost:4000/v1/recipes", dataform, { "content-type": "multipart/form-data", withCredentials: true });
       const recipes = result.data.data;
-      alert('Add data success')
+      alert("Add data success");
       router.push("/Home");
     } catch (error) {
       console.log(error);

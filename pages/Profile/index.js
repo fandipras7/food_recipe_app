@@ -127,10 +127,17 @@ export async function getServerSideProps(context) {
   // console.log(cookie);
   if (!cookie) {
     // Router.replace('/login')
-    context.res.writeHead(302, {
-      Location: `http://localhost:3000/Auth/Login`,
-    });
-    return {};
+    console.log("apakah redirect jalan");
+    // context.res.writeHead(302, {
+    //   Location: `http://localhost:3000/Auth/Login`,
+    // });
+
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/Auth/Login",
+      },
+    };
   }
   const { data: responData } = await axios.get(`http://localhost:4000/v1/myrecipe`, {
     withCredentials: true,

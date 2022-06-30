@@ -1,8 +1,8 @@
 import Head from "next/head";
 import "../styles/globals.css";
-import { wrapper, store } from "./redux/store";
+import { store, wrapper } from "../redux/store";
 import { Provider } from "react-redux";
-
+// const data = store();
 function MyApp({ Component, pageProps }) {
   return (
     <>
@@ -12,8 +12,14 @@ function MyApp({ Component, pageProps }) {
       <Provider store={store}>
         <Component {...pageProps} />
       </Provider>
+      {/* <Component {...pageProps} /> */}
+
+      {/* <Provider store={data.store}>
+        <Component {...pageProps} />
+      </Provider> */}
     </>
   );
 }
 
 export default wrapper.withRedux(MyApp);
+// export default MyApp;

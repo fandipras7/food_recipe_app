@@ -11,9 +11,7 @@ import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 
 const Home = ({ recipes, pagination }) => {
-  const { user } = useSelector((state) => state.user);
-
-  console.log(user);
+  // console.log(user);
   const router = useRouter();
   const [page, setPage] = useState({
     page: pagination.page,
@@ -151,6 +149,7 @@ export async function getServerSideProps(context) {
   // console.log(sort);
   // console.log(sortby);
   // const cookie = context.req.headers.cookie;
+
   // console.log(cookie);
   // if (!cookie) {
   //   // Router.replace('/login')
@@ -184,6 +183,7 @@ export async function getServerSideProps(context) {
     props: {
       recipes: RespData.data,
       pagination: RespData.pagination,
+      // isLogin: isLogin,
     }, // will be passed to the page component as props
   };
 }
