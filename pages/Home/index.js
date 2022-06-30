@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import Image from 'next/image'
 import MyLayout from "../../component/layout/MyLayout";
 import styles from "./home.module.css";
 import Card from "../../component/base/Card";
@@ -73,7 +74,13 @@ const Home = ({ recipes, pagination }) => {
               </div>
             </div>
             <div className="col-6">
-              <img className="img-fluid" src="/assets/img/image_1.png" alt="" />
+              {/* <img className="img-fluid" src="/assets/img/image_1.png" alt="" /> */}
+              <Image
+              src="/assets/img/image_1.png"
+              alt="pict"
+              width={500}
+              height={500}
+              ></Image>
             </div>
           </div>
           <div className="row d-flex flex-column">
