@@ -39,7 +39,8 @@ const Profile = ({ myrecipe }) => {
               </p>
             </div>
           </div>
-          <h2 style={{ margin: "40px auto", textAlign: "center" }}>{myrecipe[0].name}</h2>
+          {/* <h2 style={{ margin: "40px auto", textAlign: "center" }}>{myrecipe[0].name}</h2>  */}
+          <h2 style={{ margin: "40px auto", textAlign: "center" }}>{myrecipe.name}</h2>
           <div className={style.navigation}>
             <ul>
               <li className={selected == "my recipe" ? style.recipeActive : ""} onClick={() => setSelected("my recipe")}>

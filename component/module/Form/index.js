@@ -23,7 +23,7 @@ const Form = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:4000/v1/users/login", form, { withCredentials: true })
+      .post(`${process.env.NEXT_PUBLIC_API_URL}/users/login`, form, { withCredentials: true })
       .then(() => {
         alert("login succes");
         // localStorage.setItem("isLogin", true);

@@ -172,11 +172,12 @@ export async function getServerSideProps(context) {
   //     Cookie: cookie,
   //   },
   // }
-  const { data: RespData } = await axios.get(`http://localhost:4000/v1/recipes?page=${page}&limit=${limit}${search && `&search=${search}`}`);
+  // const { data: RespData } = await axios.get(`http://localhost:4000/v1/recipes?page=${page}&limit=${limit}${search && `&search=${search}`}`);
+  const { data: RespData } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/recipes?page=${page}&limit=${limit}${search && `&search=${search}`}`);
 
   if (sort !== undefined && sortby != undefined) {
     console.log("sort jalan");
-    const { data: RespData } = await axios.get(`http://localhost:4000/v1/recipes?page=${page}&limit=${limit}${sortby && `&sortby=${sortby}`}${sort && `&sort=${sort}`}`);
+    const { data: RespData } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/recipes?page=${page}&limit=${limit}${sortby && `&sortby=${sortby}`}${sort && `&sort=${sort}`}`);
     return {
       props: {
         recipes: RespData.data,
@@ -184,6 +185,8 @@ export async function getServerSideProps(context) {
       }, // will be passed to the page component as props
     };
   }
+
+  console.log('apakah jalan');
 
   // console.log(data);
   return {
