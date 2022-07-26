@@ -4,22 +4,41 @@ import Link from "next/link";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
   const { isLogin } = useSelector((state) => state.user);
   const [cekLogin, setCekLogin] = useState(isLogin);
   const router = useRouter();
 
-  const handleLogout = () => {
-    axios
-      .get(`http://localhost:4000/v1/users/logout`, { withCredentials: true })
-      .then((res) => {
-        alert("Anda telah Logout");
-        router.push("/Auth/Login");
-      })
-      .catch((err) => {
-        alert("error");
-      });
+  const handleLogout = async () => {
+    // axios
+    //   .get(`http://localhost:4000/v1/users/logout`, { withCredentials: true })
+    //   .then((res) => {
+    //     alert("Anda telah Logout");
+    //     router.push("/Auth/Login");
+    //   })
+    //   .catch((err) => {
+    //     alert("error");
+    //   });
+
+    // coba pake api logout
+    try {
+      const result = await fetch('api/logout')
+      const{ logout } = await result.json()
+      if (logout) {
+        Swal.fire(
+          'Success',
+          'User Logout',
+          'success'
+        )
+        router.push('/Auth/Login')
+      }
+    } catch (error) {
+      console.log(error)
+    }
+
+
   };
   return (
     <nav className={styles.navbar}>

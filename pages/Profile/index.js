@@ -123,10 +123,10 @@ const Profile = ({ myrecipe }) => {
 };
 
 export async function getServerSideProps(context) {
-  const cookie = context.req.headers.cookie;
-  // const cookie = req.cookies;
+  // const cookie = context.req.headers.cookie;
+  const { token } = context.req.cookies;
   // console.log(cookie);
-  if (!cookie) {
+  if (!token) {
     // Router.replace('/login')
     console.log("apakah redirect jalan");
     // context.res.writeHead(302, {
@@ -140,10 +140,18 @@ export async function getServerSideProps(context) {
       },
     };
   }
-  const { data: responData } = await axios.get(`http://localhost:4000/v1/myrecipe`, {
-    withCredentials: true,
+  // const { data: responData } = await axios.get(`http://localhost:4000/v1/myrecipe`, {
+  //   withCredentials: true,
+  //   headers: {
+  //     Cookie: token,
+  //   },
+  // });
+
+  // coba pake bearer token
+  const { data: responData } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/myrecipe`, {
     headers: {
-      Cookie: cookie,
+      'content-type': 'multipart/form-data',
+      Authorization: `Bearer ${token}`
     },
   });
 

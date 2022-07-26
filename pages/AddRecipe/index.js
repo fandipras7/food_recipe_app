@@ -8,6 +8,7 @@ import axios from "axios";
 
 const AddRecipe = () => {
   // const isLogin = localStorage.getItem("isLogin");
+  const token = localStorage.getItem('token')
   const router = useRouter();
   const [dataRecipe, setDataRecipe] = useState({
     title: "",
@@ -48,7 +49,13 @@ const AddRecipe = () => {
   async function fetchData(dataform) {
     try {
       setTitle("Next...");
-      const result = await axios.post("http://localhost:4000/v1/recipes", dataform, { "content-type": "multipart/form-data", withCredentials: true });
+      // const result = await axios.post("http://localhost:4000/v1/recipes", dataform, { "content-type": "multipart/form-data", withCredentials: true });
+      const result = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/recipes`, dataform, {
+        headers: {
+          "content-type": "multipart/form-data",
+          Authorization: `Bearer ${token}`,
+        },
+      });
       const recipes = result.data.data;
       alert("Add data success");
       router.push("/Home");
