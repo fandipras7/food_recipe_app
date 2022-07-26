@@ -8,7 +8,7 @@ import axios from "axios";
 
 const AddRecipe = () => {
   // const isLogin = localStorage.getItem("isLogin");
-  const token = localStorage.getItem('token')
+  // const token = localStorage.getItem('token')
   const router = useRouter();
   const [dataRecipe, setDataRecipe] = useState({
     title: "",
