@@ -82,7 +82,7 @@ const DetailRecipe = () => {
             <div className="col">
               <p className="fs-5">Video step</p>
               {/* {console.log(recipes.video)} */}
-              <Button onClick={()=>{router.push(recipes.video)}} backgroundColor="#EFC81A">
+              <Button onClick={()=>{router.push(`/Video/${id}`)}} backgroundColor="#EFC81A">
                 <i className="bi bi-play-fill"></i>
               </Button>
             </div>

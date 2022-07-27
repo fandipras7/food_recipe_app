@@ -1,0 +1,26 @@
+.imageStep img{
+    position: absolute;
+       margin-left: 0;
+     z-index: -1;
+   }
+   .caption{
+       margin-top: 130px;
+       font-weight: 500;
+       font-size: 15px;
+       font-family: 'airbnb_md';
+   }
+   .subCaption{
+       margin-top: -10px;
+       font-size: 10px;
+        font-family: 'airbnb_lt';
+   }
+   .titleVideo{
+       font-size: 30px;
+   }
+   .next{
+       font-size: 30px;
+       color: #222222;
+   }
+   .sugestion{
+       margin-top: 40px ;
+   }
