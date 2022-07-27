@@ -26,7 +26,7 @@ const RegisForm = () => {
       delete form.confirmPassword;
       e.preventDefault();
       axios
-        .post("http://localhost:4000/v1/users/register", form)
+        .post(`${process.env.NEXT_PUBLIC_API_URL}/users/login`, form)
         .then(() => {
           alert("Register succes");
           router.push("/Auth/Login");
@@ -82,7 +82,7 @@ const RegisForm = () => {
               border="1px solid #EFC81A"
               placeholder="08123813192"
             ></Input>
-            <Label width="100%" className="text-start" title="Phone Number"></Label>
+            <Label width="100%" className="text-start" title="Password"></Label>
             <Input
               value={form.password}
               name="password"
