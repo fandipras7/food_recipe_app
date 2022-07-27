@@ -26,7 +26,7 @@ const RegisForm = () => {
       delete form.confirmPassword;
       e.preventDefault();
       axios
-        .post(`${process.env.NEXT_PUBLIC_API_URL}/users/login`, form)
+        .post(`${process.env.NEXT_PUBLIC_API_URL}/users/register`, form)
         .then(() => {
           alert("Register succes");
           router.push("/Auth/Login");
