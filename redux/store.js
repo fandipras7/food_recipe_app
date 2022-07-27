@@ -30,7 +30,7 @@ import rootReducer from "./reducers/rootreducer";
 const initialState = {};
 
 // middleware
-const middleware = [thunk, logger];
+const middleware = [thunk];
 
 // creating store
 export const store = createStore(rootReducer, initialState, composeWithDevTools(applyMiddleware(...middleware)));

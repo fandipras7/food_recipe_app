@@ -24,7 +24,7 @@ const login = (dataLogin) => async (dispatch) => {
     dispatch({ type: "USER_LOGIN_PENDING" });
     console.log("apakah ini jalan");
     console.log(data);
-    const result = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/users/login`, dataLogin, { withCredentials: true });
+    const result = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/users/login`, dataLogin);
     const token = result.data.data.token;
     localStorage.setItem("token", token);
     console.log('apakah ini jaln');

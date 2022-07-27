@@ -6,7 +6,7 @@ import Button from "../../component/base/Button";
 import { useRouter } from "next/router";
 import axios from "axios";
 
-const AddRecipe = () => {
+const AddRecipe = ({token}) => {
   // const isLogin = localStorage.getItem("isLogin");
   // const token = localStorage.getItem('token')
   const router = useRouter();
@@ -120,5 +120,33 @@ const AddRecipe = () => {
     </>
   );
 };
+
+export async function getServerSideProps(context) {
+  const { token } = context.req.cookies;
+
+  let isAuth = false
+
+  if(!token) {
+    console.log('redirect halaman add recipe');
+
+    isAuth = true
+
+    return {
+      redirect: {
+        permanent: false,
+        destination: "Auth/Login"
+      }
+    }
+  }
+  // console.log(isAuth);
+
+  return {
+    props: {
+      token,
+      // isAuth
+    }
+  }
+  
+}
 
 export default AddRecipe;

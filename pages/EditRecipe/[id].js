@@ -7,7 +7,8 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import { useEffect } from "react";
 
-const EditRecipe = () => {
+const EditRecipe = ({token}) => {
+
   const router = useRouter();
   const id = router.query.id;
   const [dataRecipe, setDataRecipe] = useState({
@@ -17,7 +18,7 @@ const EditRecipe = () => {
     video: "",
   });
 
-  const [title, setTitle] = useState('Next')
+  const [title, setTitle] = useState("Next");
 
   const [videoTitle, setVideoTitle] = useState("");
 
@@ -48,12 +49,17 @@ const EditRecipe = () => {
 
   //   console.log(dataRecipe);
 
-  async function fetchData(dataform, id) {
+  async function fetchData(dataform, id, token) {
     try {
-      setTitle('Next...')
-      const result = await axios.put(`http://localhost:4000/v1/recipes/${id}`, dataform, { "content-type": "multipart/form-data", withCredentials: true });
+      setTitle("Next...");
+      const result = await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/recipes/${id}`, dataform, {
+        headers: {
+          "content-type": "multipart/form-data",
+          Authorization: `Bearer ${token}`,
+        },
+      });
       const recipes = result.data.data;
-      alert('Edit data success')
+      alert("Edit data success");
       router.push(`/DetailRecipe/${id}`);
       // console.log(recipes);
     } catch (error) {
@@ -68,14 +74,14 @@ const EditRecipe = () => {
     data.append("ingredients", dataRecipe.ingredients);
     data.append("video", dataRecipe.video);
     e.preventDefault();
-    fetchData(data, id);
+    fetchData(data, id, token);
   };
 
   async function fetchDataId(id) {
     try {
       const result = await axios({
         method: "GET",
-        baseURL: "http://localhost:4000/v1",
+        baseURL: `${process.env.NEXT_PUBLIC_API_URL}`,
         url: `/recipes/${id}`,
       });
       const recipes = result.data.data;
@@ -160,5 +166,18 @@ const EditRecipe = () => {
     </>
   );
 };
+
+export async function getServerSideProps(context) {
+  // const cookie = context.req.headers.cookie;
+  const { token } = context.req.cookies;
+  console.log(context.req.cookies);
+
+
+  return {
+    props: {
+      token
+    }, // will be passed to the page component as props
+  };
+}
 
 export default EditRecipe;

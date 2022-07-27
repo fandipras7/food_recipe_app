@@ -18,7 +18,7 @@ const DetailRecipe = () => {
     try {
       const result = await axios({
         method: "GET",
-        baseURL: "http://localhost:4000/v1",
+        baseURL: `${process.env.NEXT_PUBLIC_API_URL}`,
         url: `/recipes/${id}`,
       });
       const recipes = result.data.data;
@@ -32,7 +32,7 @@ const DetailRecipe = () => {
     try {
     await axios({
         method: "DELETE",
-        baseURL: "http://localhost:4000/v1",
+        baseURL: `${process.env.NEXT_PUBLIC_API_URL}`,
         url: `/recipes/${id}`,
       });
     } catch (error) {

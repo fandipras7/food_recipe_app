@@ -8,13 +8,16 @@ import Card from "../../component/base/Card";
 import Button from "../../component/base/Button";
 import { useRouter } from "next/router";
 
-const Profile = ({ myrecipe }) => {
+const Profile = ({ myrecipe, token }) => {
   const router = useRouter();
   const [edit, setEdit] = useState(false);
   const [selected, setSelected] = useState("my recipe");
   const deleteRecipe = (id) => {
     axios
-      .delete(`http://localhost:4000/v1/recipes/${id}`, { withCredentials: true })
+      .delete(`${process.env.NEXT_PUBLIC_API_URL}/recipes/${id}`, { headers: {
+        'content-type': 'multipart/form-data',
+        Authorization: `Bearer ${token}`
+      }, })
       .then((res) => {
         alert("success");
       })
@@ -125,14 +128,13 @@ const Profile = ({ myrecipe }) => {
 export async function getServerSideProps(context) {
   // const cookie = context.req.headers.cookie;
   const { token } = context.req.cookies;
-  // console.log(cookie);
+  console.log(context.req.cookies);
   if (!token) {
     // Router.replace('/login')
     console.log("apakah redirect jalan");
     // context.res.writeHead(302, {
     //   Location: `http://localhost:3000/Auth/Login`,
     // });
-
     return {
       redirect: {
         permanent: false,
@@ -158,6 +160,7 @@ export async function getServerSideProps(context) {
   return {
     props: {
       myrecipe: responData.data,
+      token
     }, // will be passed to the page component as props
   };
 }

@@ -3,7 +3,7 @@ import Head from "next/head";
 import Navbar from "../module/Navbar";
 import Footer from "../module/Footer";
 
-const MyLayout = ({ children, title }) => {
+const MyLayout = ({ children, title, }) => {
   return (
     <>
       <Head>
