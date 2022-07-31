@@ -135,11 +135,29 @@ REACT_APP_API_URL = [API_URL]
     <td>Register Page</td>
   </tr>
   <tr>
-    <td><image src="https://res.cloudinary.com/dbpfwb5ok/image/upload/v1659150174/portofolio/recipe/home_u3zxdf.png" alt="Home1" width=100%></td>
-    <td><image src="https://res.cloudinary.com/dbpfwb5ok/image/upload/v1659150172/portofolio/recipe/Home2_m01rpi.png" alt="Home2" width=100%/></td>
+    <td><image src="https://res.cloudinary.com/dbpfwb5ok/image/upload/v1659255590/portofolio/recipe/Home_az4b40.png" alt="Home" width=100%></td>
+    <td><image src="https://res.cloudinary.com/dbpfwb5ok/image/upload/v1659255597/portofolio/recipe/profile_a73qqw.png" alt="profile" width=100%/></td>
   </tr>
   <tr>
     <td>Home</td>
+    <td>Profile</td>
+  </tr>
+    <tr>
+    <td><image src="https://res.cloudinary.com/dbpfwb5ok/image/upload/v1659255607/portofolio/recipe/Add_Recipe_jqgkqs.png" alt="add" width=100%></td>
+    <td><image src="https://res.cloudinary.com/dbpfwb5ok/image/upload/v1659255601/portofolio/recipe/Edit_Profile_dssupf.png" alt="edit" width=100%/></td>
+  </tr>
+  <tr>
+    <td>Add Recipe</td>
+    <td>Edit Recipe</td>
+  </tr>
+  </tr>
+    <tr>
+    <td><image src="https://res.cloudinary.com/dbpfwb5ok/image/upload/v1659255614/portofolio/recipe/detailRecipe_mgby3w.png" alt="add" width=100%></td>
+    <td><image src="https://res.cloudinary.com/dbpfwb5ok/image/upload/v1659255615/portofolio/recipe/detailVideo_rpajes.png" alt="edit" width=100%/></td>
+  </tr>
+  <tr>
+    <td>Detail Recipe</td>
+    <td>Detail Video</td>
   </tr>
 </table>
       
