@@ -73,7 +73,7 @@ const Profile = ({ myrecipe, token }) => {
                           deleteRecipe(item.id);
                         }}
                         backgroundColor="#EFC81A"
-                        color="white"
+                        color="black"
                         border="none"
                       >
                         Delete
@@ -86,7 +86,7 @@ const Profile = ({ myrecipe, token }) => {
                           router.push(`/EditRecipe/${item.id}`);
                         }}
                         backgroundColor="#EFC81A"
-                        color="white"
+                        color="black"
                         border="none"
                       >
                         Edit

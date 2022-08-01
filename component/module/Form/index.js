@@ -75,7 +75,7 @@ const Form = () => {
           <div className="col-8 text-center">
             <h6>Welcome</h6>
             <p>Log in into your exiting account</p>
-            <Label width="100%" className="text-start" title="E-mail"></Label>
+            <Label width="100%" className="text-start" title="Email"></Label>
             <Input
               value={dataLogin.email}
               name="email"
@@ -85,7 +85,7 @@ const Form = () => {
               className="p-3"
               width="100%"
               border="1px solid #EFC81A"
-              placeholder="examplexxx@gmail.com"
+              placeholder="Enter Your Email"
             ></Input>
             <Label width="100%" className="text-start" title="Password"></Label>
             <Input
@@ -97,7 +97,7 @@ const Form = () => {
               className="p-3"
               width="100%"
               border="1px solid #EFC81A"
-              placeholder="Masukan password"
+              placeholder="Enter Your Password"
             ></Input>
             <div className="row align-items-center mt-2 mb-3">
               <div className="text-start d-flex">

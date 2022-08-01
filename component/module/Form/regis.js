@@ -58,7 +58,7 @@ const RegisForm = () => {
               border="1px solid #EFC81A"
               placeholder="Name"
             ></Input>
-            <Label width="100%" className="text-start" title="E-mail"></Label>
+            <Label width="100%" className="text-start" title="Email"></Label>
             <Input
               value={form.email}
               name="email"
@@ -80,7 +80,7 @@ const RegisForm = () => {
               className="p-3"
               width="100%"
               border="1px solid #EFC81A"
-              placeholder="08123813192"
+              placeholder="Enter Phone Number"
             ></Input>
             <Label width="100%" className="text-start" title="Password"></Label>
             <Input
@@ -91,11 +91,13 @@ const RegisForm = () => {
               }}
               className="p-3"
               width="100%"
+              type="password"
               border="1px solid #EFC81A"
-              placeholder="Create New Passowrd"
+              placeholder="Create New Password"
             ></Input>
-            <Label width="100%" className="text-start" title="Confirm Paswword"></Label>
+            <Label width="100%" className="text-start" title="Confirm Password"></Label>
             <Input
+            type="password"
               value={form.confirmPassword}
               name="confirmPassword"
               onChange={(e) => {
