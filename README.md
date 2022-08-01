@@ -127,8 +127,8 @@ REACT_APP_API_URL = [API_URL]
 <table>
  
   <tr>
-    <td><image src="https://res.cloudinary.com/dbpfwb5ok/image/upload/v1659150111/portofolio/recipe/Login_wrhqdy.png" alt="Login Page" width=100%></td>
-    <td><image src="https://res.cloudinary.com/dbpfwb5ok/image/upload/v1659150132/portofolio/recipe/register_piaaqs.png" width=100%/></td>
+    <td><image src="https://res.cloudinary.com/dbpfwb5ok/image/upload/v1659351592/portofolio/recipe/login_ukszon.png" alt="Login Page" width=100%></td>
+    <td><image src="https://res.cloudinary.com/dbpfwb5ok/image/upload/v1659351587/portofolio/recipe/register_jsv1kj.png" width=100%/></td>
   </tr>
    <tr>
     <td>Login Page</td>
@@ -136,7 +136,7 @@ REACT_APP_API_URL = [API_URL]
   </tr>
   <tr>
     <td><image src="https://res.cloudinary.com/dbpfwb5ok/image/upload/v1659255590/portofolio/recipe/Home_az4b40.png" alt="Home" width=100%></td>
-    <td><image src="https://res.cloudinary.com/dbpfwb5ok/image/upload/v1659255597/portofolio/recipe/profile_a73qqw.png" alt="profile" width=100%/></td>
+    <td><image src="https://res.cloudinary.com/dbpfwb5ok/image/upload/v1659351616/portofolio/recipe/profile_mkvlj8.png" alt="profile" width=100%/></td>
   </tr>
   <tr>
     <td>Home</td>
