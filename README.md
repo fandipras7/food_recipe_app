@@ -54,7 +54,7 @@
 
 ## About The Project
 
-**Mama Recipe** A web application that has the main feature where users can share their recipes to the internet world so the recipes that users share can be seen by people who visit this website, on this website we can also share recipes in the form of images or video clips with detailed descriptions. can be described so that it is easier for visitors when learning the recipe.
+**Mama Recipe** Mama Recipe is a web application that has the main feature where users can share their recipes in the form of video tutorials to make it easier for visitors to learn the recipe they are looking for. This website is developed with PostgreSql, Express JS, Next JS and Node JS technologies
 
 ### Built With
 
