@@ -90,7 +90,7 @@ const AddRecipe = ({token}) => {
           </div>
           <div className="row justify-content-center">
             <div className="col-8 mt-5 text-center">
-              <Input name="title" onChange={handleChange} border="none" width="100%" placeholder="title"></Input>
+              <Input name="title" onChange={handleChange} border="none" width="100%" placeholder="Title"></Input>
             </div>
           </div>
           <div className="row justify-content-center">
