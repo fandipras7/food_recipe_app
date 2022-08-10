@@ -89,6 +89,7 @@ const Form = () => {
             ></Input>
             <Label width="100%" className="text-start" title="Password"></Label>
             <Input
+              type="password"
               value={dataLogin.password}
               name="password"
               onChange={(e) => {
@@ -113,6 +114,7 @@ const Form = () => {
                 onClick={() => {
                   rounter.push("/Auth/Register");
                 }}
+                style={{cursor:"pointer"}}
               >
                 Sign Up
               </span>

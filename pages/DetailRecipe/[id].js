@@ -8,7 +8,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import axios from 'axios'
 
-const DetailRecipe = () => {
+const DetailRecipe = ({isLogin}) => {
   const router = useRouter();
   const id = router.query.id;
   // console.log(id);
@@ -51,7 +51,7 @@ const DetailRecipe = () => {
 
   return (
     <div className="position-relative">
-      <Navbar></Navbar>
+      <Navbar isAuth={isLogin}></Navbar>
       <div className="mb-5">
         <div className="container">
           <div className="row justify-content-center mt-5 text-center">
@@ -93,5 +93,21 @@ const DetailRecipe = () => {
     </div>
   );
 };
+
+export async function getServerSideProps(context) {
+  const { token } = context.req.cookies;
+
+  let isLogin = false;
+
+  if(token){
+    isLogin = true
+  }
+
+  return {
+    props: {
+      isLogin
+    }
+  }
+}
 
 export default DetailRecipe;

@@ -9,7 +9,7 @@ import Button from "../../component/base/Button";
 import { useRouter } from "next/router";
 import Swal from "sweetalert2";
 
-const Profile = ({ myrecipe, token, profile }) => {
+const Profile = ({ myrecipe, token, profile, isLogin }) => {
   const router = useRouter();
   const [edit, setEdit] = useState(false);
   const [selected, setSelected] = useState("my recipe");
@@ -83,10 +83,10 @@ const Profile = ({ myrecipe, token, profile }) => {
   }, [])
   return (
     <>
-      <MyLayout title="profile">
+      <MyLayout isAuth={isLogin} title="profile">
         <main>
           <div className={style.profile}>
-            <img className={style.ava} src={profile ? avaPreview : "/assets/img/profile.png"} alt="" />
+            <img className={style.ava} src={profile.photo ? avaPreview : "/assets/img/profile.png"} alt="" />
             <img src="/assets/pencil.svg" className={style.edit} alt="" style={{ cursor: "pointer" }} onClick={() => setEdit((edit) => !edit)} />
             {/* <p className={style.name}>{profile && profile.name}</p> */}
             <div className={edit ? style.menu : style.menuActive}>
@@ -192,7 +192,9 @@ const Profile = ({ myrecipe, token, profile }) => {
 export async function getServerSideProps(context) {
   // const cookie = context.req.headers.cookie;
   const { token } = context.req.cookies;
-  console.log(context.req.cookies);
+  // console.log(context.req.cookies);
+
+  let isLogin = false
   if (!token) {
     // Router.replace('/login')
     console.log("apakah redirect jalan");
@@ -205,6 +207,8 @@ export async function getServerSideProps(context) {
         destination: "/Auth/Login",
       },
     };
+  } else {
+    isLogin = true
   }
   // const { data: responData } = await axios.get(`http://localhost:4000/v1/myrecipe`, {
   //   withCredentials: true,
@@ -234,7 +238,8 @@ export async function getServerSideProps(context) {
     props: {
       myrecipe: responData.data,
       profile: profile.data,
-      token
+      token,
+      isLogin
     }, // will be passed to the page component as props
   };
 }

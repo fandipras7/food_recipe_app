@@ -4,9 +4,10 @@ import MyLayout from "../../component/layout/MyLayout";
 import Input from "../../component/base/Input";
 import Button from "../../component/base/Button";
 import { useRouter } from "next/router";
+import Swal from "sweetalert2";
 import axios from "axios";
 
-const AddRecipe = ({token}) => {
+const AddRecipe = ({token, isLogin}) => {
   // const isLogin = localStorage.getItem("isLogin");
   // const token = localStorage.getItem('token')
   const router = useRouter();
@@ -57,10 +58,17 @@ const AddRecipe = ({token}) => {
         },
       });
       const recipes = result.data.data;
-      alert("Add data success");
+      Swal.fire({
+        icon: "success",
+        text: "Add Recipe Success"
+      })
       router.push("/Home");
     } catch (error) {
       console.log(error);
+      Swal.fire({
+        icon: "error",
+        text: "Add Recipe Failed"
+      })
     }
   }
 
@@ -76,7 +84,7 @@ const AddRecipe = ({token}) => {
 
   return (
     <>
-      <MyLayout title="Add Recipe">
+      <MyLayout isAuth={isLogin} title="Add Recipe">
         <div className="container mb-5">
           <div className="row justify-content-center">
             <div className="col-8 mt-5 text-center">
@@ -95,7 +103,7 @@ const AddRecipe = ({token}) => {
           </div>
           <div className="row justify-content-center">
             <div className="col-8 mt-5 text-center">
-              <textarea style={{ height: "250px" }} /*value={dataProduct.description} */ name="ingredients" onChange={handleChange} className="form-control" placeholder="Ingredients" aria-label="With textarea"></textarea>
+              <textarea style={{ height: "250px" }} /*value={dataProduct.description} */ name="ingredients" onChange={handleChange} className="form-control" placeholder="Ingredients: example input(bawang merah,bawang putih,cabai)" aria-label="With textarea"></textarea>
             </div>
           </div>
           <div className="row justify-content-center">
@@ -124,12 +132,10 @@ const AddRecipe = ({token}) => {
 export async function getServerSideProps(context) {
   const { token } = context.req.cookies;
 
-  let isAuth = false
+  let isLogin = false
 
   if(!token) {
     console.log('redirect halaman add recipe');
-
-    isAuth = true
 
     return {
       redirect: {
@@ -137,12 +143,15 @@ export async function getServerSideProps(context) {
         destination: "Auth/Login"
       }
     }
+  } else{
+    isLogin = true
   }
   // console.log(isAuth);
 
   return {
     props: {
       token,
+      isLogin
       // isAuth
     }
   }
