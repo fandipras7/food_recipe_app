@@ -11,7 +11,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 
-const Home = ({ recipes, pagination }) => {
+const Home = ({ recipes, pagination, isLogin }) => {
   // console.log(user);
   const router = useRouter();
   const [page, setPage] = useState({
@@ -50,7 +50,7 @@ const Home = ({ recipes, pagination }) => {
     <>
       <div className="container-fluid position-relative">
         <div className={styles.sideColor}></div>
-        <MyLayout title="Home">
+        <MyLayout isAuth={isLogin} title="Home">
           <div className={styles.children + " row align-items-center mt-5"}>
             <div className="col-6 text-center">
               <p className="fs-3 fw-bold">
@@ -111,7 +111,7 @@ const Home = ({ recipes, pagination }) => {
                 </select>
               </div>
             </div>
-            <div className="row row-cols-3 justify-content-center">
+            <div className="row row-cols-4 justify-content-center">
               {recipes.map((item) => (
                 <Card
                   key={item.id}
@@ -133,9 +133,17 @@ const Home = ({ recipes, pagination }) => {
 };
 
 export async function getServerSideProps(context) {
+
+  const {token} = context.req.cookies
+
+  let isLogin = false 
+
+  if(token){
+    isLogin = true
+  }
   // console.log(context);
   let page = 1;
-  let limit = 2;
+  let limit = 3;
   let search;
   let sort;
   let sortby;
@@ -193,6 +201,7 @@ export async function getServerSideProps(context) {
     props: {
       recipes: RespData.data,
       pagination: RespData.pagination,
+      isLogin
       // isLogin: isLogin,
     }, // will be passed to the page component as props
   };

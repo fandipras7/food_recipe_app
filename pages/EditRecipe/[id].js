@@ -6,8 +6,9 @@ import style from "./edit.module.css";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { useEffect } from "react";
+import Swal from "sweetalert2";
 
-const EditRecipe = ({token}) => {
+const EditRecipe = ({token, isLogin}) => {
 
   const router = useRouter();
   const id = router.query.id;
@@ -59,11 +60,17 @@ const EditRecipe = ({token}) => {
         },
       });
       const recipes = result.data.data;
-      alert("Edit data success");
+      Swal.fire({
+        icon: "success",
+        text: "Edit Recipe Success"
+      })
       router.push(`/DetailRecipe/${id}`);
       // console.log(recipes);
     } catch (error) {
-      console.log(error);
+      Swal.fire({
+        icon: "success",
+        text: "Edit Recipe Failed"
+      })
     }
   }
 
@@ -109,7 +116,7 @@ const EditRecipe = ({token}) => {
 
   return (
     <>
-      <MyLayout title="Add Recipe">
+      <MyLayout isAuth={isLogin} title="Add Recipe">
         <div className="container mb-5">
           <div className="row justify-content-center">
             <div className="col-8 mt-5 text-center">
@@ -170,12 +177,18 @@ const EditRecipe = ({token}) => {
 export async function getServerSideProps(context) {
   // const cookie = context.req.headers.cookie;
   const { token } = context.req.cookies;
-  console.log(context.req.cookies);
+  // console.log(context.req.cookies);
+  let isLogin = false;
+
+  if(token){
+    isLogin = true
+  }
 
 
   return {
     props: {
-      token
+      token,
+      isLogin
     }, // will be passed to the page component as props
   };
 }

@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import Button from "../../base/Button";
 import Input from "../../base/Input";
 import Label from "../../base/Label";
+import Swal from "sweetalert2";
 
 const RegisForm = () => {
   const router = useRouter();
@@ -28,11 +29,17 @@ const RegisForm = () => {
       axios
         .post(`${process.env.NEXT_PUBLIC_API_URL}/users/register`, form)
         .then(() => {
-          alert("Register succes");
+          Swal.fire({
+            icon: "success",
+            text: "Register Success"
+          })
           router.push("/Auth/Login");
         })
         .catch(() => {
-          alert("Register gagal");
+          Swal.fire({
+            icon: "error",
+            text: "E-mail has been registered"
+          })
         });
     } else {
       alert("Konfirmasi password tidak sama");
@@ -122,6 +129,7 @@ const RegisForm = () => {
                 onClick={() => {
                   router.push("/Auth/Login");
                 }}
+                style={{cursor:"pointer"}}
               >
                 Log in Here
               </span>

@@ -6,9 +6,10 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-const Navbar = () => {
+const Navbar = ({isAuth}) => {
   const { isLogin } = useSelector((state) => state.user);
-  const [cekLogin, setCekLogin] = useState(isLogin);
+  // const [cekLogin, setCekLogin] = useState(isLogin);
+  const [cekLogin, setCekLogin] = useState(isAuth);
   const router = useRouter();
 
   const handleLogout = async () => {

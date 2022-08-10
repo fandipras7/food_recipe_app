@@ -6,7 +6,7 @@ import moment from 'moment'
 import axios from 'axios'
 import MyLayout from '../../component/layout/MyLayout'
 
-const Video = ({ recipe }) => {
+const Video = ({ recipe, isLogin }) => {
     const [title, setTitle] = useState()
     const [video, setVideo] = useState()
     const [create, setCreate] = useState()
@@ -19,7 +19,7 @@ const Video = ({ recipe }) => {
     }, [])
     return (
         <>
-            <MyLayout title="Detail Video">
+            <MyLayout isAuth={isLogin} title="Detail Video">
                 <main className='mt-5'>
                     <div className='container'>
                         <div className='row'>
@@ -89,10 +89,10 @@ export async function getServerSideProps(context) {
       const recipeID = context.params.id;
       console.log(recipeID);
       
-      let isAuth = false;
+      let isLogin = false;
   
       if (context.req.cookies) {
-        isAuth = true;
+        isLogin = true;
       }
       const { data: RespData } = await axios.get(
         `${process.env.NEXT_PUBLIC_API_URL}/recipes/${recipeID}`
@@ -100,7 +100,7 @@ export async function getServerSideProps(context) {
       console.log(RespData.data);
       return {
         props: {
-          isAuth: isAuth,
+          isLogin,
           recipe: RespData.data,
         },
       };
