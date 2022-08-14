@@ -11,6 +11,7 @@
   "dependencies": {
     "axios": "^0.27.2",
     "babel-eslint": "^10.1.0",
+    "formik": "^2.2.9",
     "moment": "^2.29.4",
     "next": "12.1.6",
     "next-redux-wrapper": "^7.0.5",
@@ -21,7 +22,8 @@
     "redux-devtools-extension": "^2.13.9",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.4.1",
-    "sweetalert2": "^11.4.24"
+    "sweetalert2": "^11.4.24",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@babel/core": "^7.18.6",

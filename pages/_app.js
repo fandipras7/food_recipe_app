@@ -1,4 +1,5 @@
 import "../styles/globals.css";
+
 import { store, wrapper } from "../redux/store";
 import { Provider } from "react-redux";
 // const data = store();
